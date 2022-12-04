@@ -70,7 +70,7 @@ export const OAuth: FC<OAuthProps> = (props) => {
       process.env.NEXT_PUBLIC_CLIENT_ID
     }&scope=${selectedScope.join(
       "%20"
-    )}&response_type=code&redirect_uri=http://localhost:3001`;
+    )}&response_type=code&redirect_uri=${process.env.REDIRECT_URI}`;
   };
 
   return (
