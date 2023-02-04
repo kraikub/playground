@@ -66,7 +66,7 @@ export const OAuth: FC<OAuthProps> = (props) => {
   }
 
   const getSigninUrl = () => {
-    return `https://app.kraikub.com/signin?client_id=${
+    return `${process.env.NEXT_PUBLIC_OAUTH_HOST}/signin?client_id=${
       process.env.NEXT_PUBLIC_CLIENT_ID
     }&scope=${selectedScope.join(
       "%20"

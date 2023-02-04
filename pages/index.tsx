@@ -4,19 +4,16 @@ import {
   Container,
   Heading,
   Table,
-  TableCaption,
   TableContainer,
   Tbody,
   Td,
   Text,
-  Tfoot,
   Th,
   Thead,
   Tr,
   useColorModeValue,
   VStack,
 } from "@chakra-ui/react";
-import { useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { materialOceanic } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { Navbar } from "../src/components/Navbar";
@@ -24,22 +21,6 @@ import { BsFillCheckCircleFill } from "react-icons/bs";
 import { OAuth } from "../src/components/OAuth";
 import { GetServerSideProps, NextPage } from "next";
 import axios from "axios";
-
-const Line = ({ children, language }: any) => {
-  return (
-    <SyntaxHighlighter
-      language={language}
-      style={materialOceanic}
-      codeTagProps={{ style: { fontFamily: "'Roboto Mono', monospace" } }}
-      customStyle={{
-        borderRadius: "10px",
-        backgroundColor: "#2c3036",
-      }}
-    >
-      {children}
-    </SyntaxHighlighter>
-  );
-};
 
 const signinQueryStringTableContent = [
   {
@@ -87,7 +68,7 @@ export const getServerSideProps: GetServerSideProps<{ data: Data }> = async (
   }
   try {
     const { data } = await axios.post(
-      "https://app.kraikub.com/api/oauth/v1/token",
+      `${process.env.NEXT_PUBLIC_OAUTH_HOST}/api/oauth/v1/token`,
       {
         code: context.query.code,
         client_id: process.env.NEXT_PUBLIC_CLIENT_ID,
