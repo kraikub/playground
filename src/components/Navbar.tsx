@@ -14,15 +14,9 @@ import { FC } from "react";
 export const Navbar: FC = () => {
   const { toggleColorMode, colorMode } = useColorMode();
   return (
-    <Box
-      boxShadow="0 2px 30px 3px #00000010"
-      position="sticky"
-      top={0}
-      zIndex={800}
-      bg="white"
-    >
+    <Box color="white">
       <Container
-        maxW="1800px"
+        maxW="container.xl"
         h="60px"
         display="flex"
         justifyContent="space-between"
@@ -32,7 +26,7 @@ export const Navbar: FC = () => {
           <Heading size="sm">
             <Box
               as="span"
-              fontFamily={`"Inter", Helvetica, san-serif`}
+              fontFamily={`"Inter", Helvetica, sans-serif`}
               letterSpacing={"-0.03em"}
               fontWeight={700}
             >

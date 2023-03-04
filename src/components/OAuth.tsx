@@ -182,7 +182,7 @@ export const OAuth: FC<OAuthProps> = (props) => {
                 height="80px"
                 fontSize={18}
                 fontWeight={600}
-                fontFamily={`Inter, Helvetica, san-serif;`}
+                fontFamily={`Inter, Helvetica, sans-serif;`}
                 letterSpacing="-0.03em"
                 rounded={16}
                 _hover={{

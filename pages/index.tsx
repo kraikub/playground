@@ -25,6 +25,7 @@ import { BsFillCheckCircleFill } from "react-icons/bs";
 import { OAuth } from "../src/components/OAuth";
 import { GetServerSideProps, NextPage } from "next";
 import axios from "axios";
+import { Footer } from "../src/components/Footer";
 
 const signinQueryStringTableContent = [
   {
@@ -98,15 +99,15 @@ export const getServerSideProps: GetServerSideProps<{ data: Data }> = async (
 const Home: NextPage<Data> = (props) => {
   return (
     <>
-      <Navbar />
       <Box
         bg="linear-gradient(169deg, rgba(0,30,43,1) 57%, rgba(0,0,0,1) 100%)"
         minH="100vh"
         color="white"
       >
-        <Container maxW="1800px" py="50px">
-          <Grid templateColumns="repeat(12, 1fr)" columnGap={5} rowGap={8}>
-            <GridItem colSpan={[12, 5]}>
+        <Navbar />
+        <Container maxW="container.xl" py="50px">
+          <Grid templateColumns="repeat(12, 1fr)" columnGap={8} rowGap={8}>
+            <GridItem colSpan={[12, 6]}>
               <Heading fontWeight={600}>ทดลองใช้งานระบบยืนยันตัวตน</Heading>
               <Text fontSize={20} fontWeight={500} opacity={0.7} mt={2}>
                 Sign in with Kasetsart หรือ เข้าสู่ระบบด้วยเกษตรศาสตร์
@@ -119,22 +120,23 @@ const Home: NextPage<Data> = (props) => {
                 ซึ่งเป็นระบบยืนยันตัวตนที่ถูกสร้างขึ้นด้วย OAuth 2.0 Protocol
               </Text>
               <ButtonGroup my={5}>
-              <Button
-                size="lg"
-                color="mongo.blue"
-                bg="mongo.lime"
-                _hover={{ bg: "mongo.lime" }}
-              >
-                ไปที่เว็บไซต์หลัก
-              </Button>
+                <Button
+                  size="lg"
+                  color="mongo.blue"
+                  bg="mongo.lime"
+                  _hover={{ bg: "mongo.lime" }}
+                >
+                  ไปที่เว็บไซต์หลัก
+                </Button>
               </ButtonGroup>
             </GridItem>
-            <GridItem colSpan={[12, 7]} color="black">
+            <GridItem colSpan={[12, 6]} color="black">
               <OAuth data={props.data} />
             </GridItem>
           </Grid>
         </Container>
       </Box>
+      <Footer />
     </>
   );
 };
