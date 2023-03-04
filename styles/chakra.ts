@@ -1,7 +1,7 @@
 import { ComponentStyleConfig, extendTheme } from "@chakra-ui/react";
-import { mode } from "@chakra-ui/theme-tools"
+import { mode } from "@chakra-ui/theme-tools";
 const config = {
-  initialColorMode: "dark",
+  initialColorMode: "light",
   useSystemColorMode: false,
 };
 
@@ -20,13 +20,19 @@ export const colors = {
       300: "#644AFC",
       400: "#5238EC",
       500: "#2D19A6",
-    }
-  }
+    },
+  },
+  mongo: {
+    lime: "#00ed64",
+    blue: "#001e2b",
+    blueLight: "#022c3d",
+    green: "#00684a",
+  },
 };
 
 const fonts = {
-  body: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";`,
-  heading: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";`,
+  body: `'Kanit', sans-serif`,
+  heading: `'Kanit', sans-serif`,
 };
 
 const components: { [key: string]: ComponentStyleConfig } = {
@@ -73,9 +79,9 @@ const styles = {
   global: (props: any) => ({
     body: {
       bg: mode("#ffffff", "#0c0c0c")(props),
-    }
-  })
-}
+    },
+  }),
+};
 
 const overrides = {
   config,

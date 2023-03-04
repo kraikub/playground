@@ -1,7 +1,11 @@
 import {
   Box,
+  Button,
+  ButtonGroup,
   Code,
   Container,
+  Grid,
+  GridItem,
   Heading,
   Table,
   TableContainer,
@@ -95,75 +99,42 @@ const Home: NextPage<Data> = (props) => {
   return (
     <>
       <Navbar />
-      <Container maxW="container.xl" py="50px">
-        <Heading size="lg">Developers Playground</Heading>
-        <Text my={6}>
-          Learn how to use our OAuth 2.0 Authorization Server to authenticate
-          any KU students on your applications.
-        </Text>
-        <Box my={6}>
-          <OAuth data={props.data} />
-        </Box>
-        <VStack alignItems="start" w="full" my="100px" spacing="50px">
-          <VStack alignItems="start" spacing={6} maxW="full">
-            <Heading size="md">
-              Step 1: Bring your users to the sign in page.
-            </Heading>
-            <Text>
-              Base URL for signing your users in is{" "}
-              <Code>https://app.kraikub.com/signin</Code>. When users tap the{" "}
-              <strong>SIGN IN WITH KU</strong> button on your web-app or
-              mobile-app, your need to redirect your users to the given URL.
-              There for, some parameters are required as {`"Query strings"`}.
-              Query string is a key-value parameter which is provided on the
-              sign in URL. An example of a query string is {`?key=value`}. Once
-              you redirect your users to our sign in URL, you need to provide
-              these query strings to let Kraikub OAuth 2.0 server knows how to
-              interact with your sign in requests.
-            </Text>
-            <Box w="full">
-              <TableContainer
-                whiteSpace="normal"
-                borderStyle="solid"
-                borderWidth="1px"
-                borderColor={useColorModeValue("gray.200", "gray.800")}
-                rounded={8}
+      <Box
+        bg="linear-gradient(169deg, rgba(0,30,43,1) 57%, rgba(0,0,0,1) 100%)"
+        minH="100vh"
+        color="white"
+      >
+        <Container maxW="1800px" py="50px">
+          <Grid templateColumns="repeat(12, 1fr)" columnGap={5} rowGap={8}>
+            <GridItem colSpan={[12, 5]}>
+              <Heading fontWeight={600}>ทดลองใช้งานระบบยืนยันตัวตน</Heading>
+              <Text fontSize={20} fontWeight={500} opacity={0.7} mt={2}>
+                Sign in with Kasetsart หรือ เข้าสู่ระบบด้วยเกษตรศาสตร์
+                เป็นระบบยืนยันตัวตนที่เปิดให้แอปพลิเคชันใดๆ
+                สามารถยืนยันตัวตนนักศึกษามหาวิทยาลัยเกษตรศาสตร์ได้
+              </Text>
+              <Text fontSize={20} fontWeight={500} opacity={0.7} mt={8}>
+                Sign in with Kasetsart ทำงานเหมือนกับ Sign in with Google, Sign
+                in with Facebook และอื่นๆ
+                ซึ่งเป็นระบบยืนยันตัวตนที่ถูกสร้างขึ้นด้วย OAuth 2.0 Protocol
+              </Text>
+              <ButtonGroup my={5}>
+              <Button
+                size="lg"
+                color="mongo.blue"
+                bg="mongo.lime"
+                _hover={{ bg: "mongo.lime" }}
               >
-                <Table size="lg">
-                  <Thead>
-                    <Tr>
-                      <Th>KEY</Th>
-                      <Th>VALUE</Th>
-                      <Th maxWidth="400px">DESCRIPTION</Th>
-                      <Th>REQUIRED</Th>
-                    </Tr>
-                  </Thead>
-                  <Tbody fontSize={14} fontWeight={400}>
-                    {signinQueryStringTableContent.map((row, index) => {
-                      return (
-                        <Tr key={`sign-in-query-table-${index}`}>
-                          <Td>
-                            <Code>{row.key}</Code>
-                          </Td>
-                          <Td>{row.value}</Td>
-                          <Td maxWidth="400px">{row.description}</Td>
-                          <Td>
-                            {row.required ? (
-                              <BsFillCheckCircleFill />
-                            ) : (
-                              "(optional)"
-                            )}
-                          </Td>
-                        </Tr>
-                      );
-                    })}
-                  </Tbody>
-                </Table>
-              </TableContainer>
-            </Box>
-          </VStack>
-        </VStack>
-      </Container>
+                ไปที่เว็บไซต์หลัก
+              </Button>
+              </ButtonGroup>
+            </GridItem>
+            <GridItem colSpan={[12, 7]} color="black">
+              <OAuth data={props.data} />
+            </GridItem>
+          </Grid>
+        </Container>
+      </Box>
     </>
   );
 };

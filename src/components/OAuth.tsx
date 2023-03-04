@@ -6,6 +6,7 @@ import {
   Checkbox,
   Container,
   Divider,
+  Flex,
   Heading,
   Stack,
   Text,
@@ -22,11 +23,11 @@ const scopes = [
     isRequired: true,
   },
   {
-    label: "university_email",
+    label: "email",
     isRequired: false,
   },
   {
-    label: "personal_email",
+    label: "profile_pic",
     isRequired: false,
   },
   {
@@ -35,6 +36,14 @@ const scopes = [
   },
   {
     label: "educations",
+    isRequired: false,
+  },
+  {
+    label: "fullname",
+    isRequired: false,
+  },
+  {
+    label: "account_type",
     isRequired: false,
   },
 ];
@@ -68,9 +77,9 @@ export const OAuth: FC<OAuthProps> = (props) => {
   const getSigninUrl = () => {
     return `${process.env.NEXT_PUBLIC_OAUTH_HOST}/signin?client_id=${
       process.env.NEXT_PUBLIC_CLIENT_ID
-    }&scope=${selectedScope.join(
-      "%20"
-    )}&response_type=code&redirect_uri=${process.env.NEXT_PUBLIC_REDIRECT_URI}`;
+    }&scope=${selectedScope.join("%20")}&response_type=code&redirect_uri=${
+      process.env.NEXT_PUBLIC_REDIRECT_URI
+    }`;
   };
 
   return (
@@ -80,19 +89,17 @@ export const OAuth: FC<OAuthProps> = (props) => {
           // Error on exchanging authorization code
           <Alert status="error" variant="left-accent" my={4}>
             <AlertIcon />
-            Sign in failed: Code exchange is not authorized!
+            Sign in failed: Code exchange is not authorized! Please try again.
           </Alert>
         )
       ) : (
         <>
-          <Box
-            py={6}
-            borderStyle="solid"
-            borderColor={boxBorderColor}
-            borderWidth="1px"
-            rounded={10}
-            mb={4}
-          >
+          <Flex justifyContent="end" mb={2}>
+            <Button size="sm" rounded="full" onClick={() => router.push("/")}>
+              ปิดผลลัพธ์
+            </Button>
+          </Flex>
+          <Box py={6} bg="white" rounded={10} mb={4}>
             <Box px={4} mb={4}>
               <Heading size="sm">Authorization code exchange result</Heading>
             </Box>
@@ -101,14 +108,7 @@ export const OAuth: FC<OAuthProps> = (props) => {
               <Code language="json">{JSON.stringify(props.data, null, 2)}</Code>
             </Box>
           </Box>
-          <Box
-            py={6}
-            borderStyle="solid"
-            borderColor={boxBorderColor}
-            borderWidth="1px"
-            rounded={10}
-            mb={4}
-          >
+          <Box py={6} bg="white" rounded={10} mb={4}>
             <Box px={4} mb={4}>
               <Heading size="sm">OpenID Connect</Heading>
               <Text fontSize={12} mt={2}>
@@ -122,30 +122,15 @@ export const OAuth: FC<OAuthProps> = (props) => {
           </Box>
         </>
       )}
-      <Box
-        py={8}
-        borderStyle="solid"
-        borderColor={boxBorderColor}
-        borderWidth="1px"
-        rounded={10}
-      >
-        <Box display="flex" justifyContent="center" alignItems="center" mb={8}>
-          <Link href={getSigninUrl()}>
-            <a>
-              <Button size="lg" colorScheme="messenger">
-                Sign in with KU
-              </Button>
-            </a>
-          </Link>
-        </Box>
-        <Divider />
-        <Container maxW="600px" mt={4} py={4}>
-          <Heading size="md" mb={5}>
-            Choose sign in scope(s)
+      <Box bg="white" rounded={10}>
+        <Box p={6}>
+          <Heading size="md" mb={2}>
+            รายละเอียดการเข้าสู่ระบบ
           </Heading>
-          <Text mb={5}>
-            Sign in scope(s) tells Kraikub which data topic you need to claim
-            from your users.
+          <Text mb={5} opacity={0.7} fontSize={18}>
+            การทดลองเข้าสู่ระบบครั้งนี้จะทำให้แอปพลิเคชันสามารถเข้าถึงข้อมูลส่วนตัวของคุณได้
+            เลือกข้อมูลที่คุณต้องการดูและลอง Sign in with Kasetsart
+            ด้านล่างได้เลย
           </Text>
           <Stack spacing={[1, 5]} direction="column">
             {scopes.map((s, index) => {
@@ -154,7 +139,7 @@ export const OAuth: FC<OAuthProps> = (props) => {
                   key={`scope-${index}-mapped`}
                   size="md"
                   isChecked={selectedScope.includes(s.label)}
-                  colorScheme="messenger"
+                  colorScheme="katrade"
                   defaultChecked={s.isRequired}
                   onChange={(e) => {
                     if (s.isRequired) {
@@ -179,15 +164,39 @@ export const OAuth: FC<OAuthProps> = (props) => {
             rounded={8}
             fontSize={12}
             fontWeight={600}
+            fontFamily={`"Roboto Mono", monospace`}
           >
             {`https://app.kraikub.com/signin?client_id=${"<your-client-id>"}&scope=${selectedScope.join(
               "%20"
             )}&redirect_uri=<your-server-url>`}
           </Box>
-          <Text>
-            And now click at Sign in with KU Button above and see the result.
-          </Text>
-        </Container>
+        </Box>
+        <Box p={4}>
+          <Link href={getSigninUrl()}>
+            <a>
+              <Button
+                size="lg"
+                color="mongo.lime"
+                bg="mongo.blue"
+                w="full"
+                height="80px"
+                fontSize={18}
+                fontWeight={600}
+                fontFamily={`Inter, Helvetica, san-serif;`}
+                letterSpacing="-0.03em"
+                rounded={16}
+                _hover={{
+                  bg: "mongo.blueLight",
+                }}
+                _active={{
+                  bg: "mongo.blueLight",
+                }}
+              >
+                Sign in with Kasetsart
+              </Button>
+            </a>
+          </Link>
+        </Box>
       </Box>
     </>
   );

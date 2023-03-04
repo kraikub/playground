@@ -1,38 +1,47 @@
-import { Box, Button, ButtonGroup, Container, Heading, HStack, IconButton, useColorMode } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  Container,
+  Heading,
+  HStack,
+  IconButton,
+  useColorMode,
+} from "@chakra-ui/react";
 import { BiMoon, BiSun } from "react-icons/bi";
 import { FC } from "react";
 
 export const Navbar: FC = () => {
-  const { toggleColorMode, colorMode } = useColorMode()
+  const { toggleColorMode, colorMode } = useColorMode();
   return (
-    <Box boxShadow="0 2px 3px 3px #00000010">
+    <Box
+      boxShadow="0 2px 30px 3px #00000010"
+      position="sticky"
+      top={0}
+      zIndex={800}
+      bg="white"
+    >
       <Container
-        maxW="container.xl"
+        maxW="1800px"
         h="60px"
         display="flex"
         justifyContent="space-between"
         alignItems="center"
       >
         <Box>
-          <Heading size="sm" fontWeight={700}>
-            KRAIKUB{" "}
-            <Box as="span" fontWeight={400} opacity={0.8}>
-              PLAYGROUND
-            </Box>
+          <Heading size="sm">
+            <Box
+              as="span"
+              fontFamily={`"Inter", Helvetica, san-serif`}
+              letterSpacing={"-0.03em"}
+              fontWeight={700}
+            >
+              KRAIKUB
+            </Box>{" "}
+            {"(ใครคับ)"}
           </Heading>
         </Box>
-        <ButtonGroup>
-        <IconButton aria-label="toggle-theme" onClick={toggleColorMode} variant="ghost" fontSize={24}>
-          {
-            colorMode === "light" ? <BiMoon /> : <BiSun />
-          }
-          
-          </IconButton>
-          <a href="https://kraikub.com">
-            <Button colorScheme="messenger" fontSize={14} fontWeight={700}>TRY NOW</Button>
-          </a>
-
-        </ButtonGroup>
+        <ButtonGroup></ButtonGroup>
       </Container>
     </Box>
   );
