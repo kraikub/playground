@@ -123,13 +123,13 @@ export const OAuth: FC<OAuthProps> = (props) => {
         </>
       )}
       <Box bg="white" rounded={10}>
-        <Box p={6}>
-          <Heading size="md" mb={2}>
-            รายละเอียดการเข้าสู่ระบบ
+        <Box p={6} pb={2}>
+          <Heading size="lg" mb={4}>
+            ทดสอบได้ที่นี่
           </Heading>
           <Text mb={5} opacity={0.7} fontSize={18}>
             การทดลองเข้าสู่ระบบครั้งนี้จะทำให้แอปพลิเคชันสามารถเข้าถึงข้อมูลส่วนตัวของคุณได้
-            เลือกข้อมูลที่คุณต้องการดูและลอง Sign in with Kasetsart
+            เลือกข้อมูลที่คุณต้องการดูและลองกดปุ่ม Sign in with Kasetsart
             ด้านล่างได้เลย
           </Text>
           <Stack spacing={[1, 5]} direction="column">
@@ -157,10 +157,10 @@ export const OAuth: FC<OAuthProps> = (props) => {
             })}
           </Stack>
           <Box
-            my={6}
+            mt={2}
             bgColor={useColorModeValue("gray.100", "gray.800")}
             px={4}
-            py={6}
+            py={3}
             rounded={8}
             fontSize={12}
             fontWeight={600}

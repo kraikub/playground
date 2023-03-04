@@ -2,26 +2,15 @@ import {
   Box,
   Button,
   ButtonGroup,
-  Code,
   Container,
   Grid,
   GridItem,
   Heading,
-  Table,
-  TableContainer,
-  Tbody,
-  Td,
   Text,
-  Th,
-  Thead,
-  Tr,
-  useColorModeValue,
-  VStack,
 } from "@chakra-ui/react";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { materialOceanic } from "react-syntax-highlighter/dist/cjs/styles/prism";
+
 import { Navbar } from "../src/components/Navbar";
-import { BsFillCheckCircleFill } from "react-icons/bs";
+import { IoIosArrowRoundForward } from "react-icons/io";
 import { OAuth } from "../src/components/OAuth";
 import { GetServerSideProps, NextPage } from "next";
 import axios from "axios";
@@ -122,11 +111,11 @@ const Home: NextPage<Data> = (props) => {
               <ButtonGroup my={5}>
                 <Button
                   size="lg"
-                  color="mongo.blue"
-                  bg="mongo.lime"
-                  _hover={{ bg: "mongo.lime" }}
+                  variant="ghost"
+                  _hover={{ bg: "#ffffff10" }}
+                  gap={2}
                 >
-                  ไปที่เว็บไซต์หลัก
+                  ไปที่เว็บไซต์หลัก <IoIosArrowRoundForward />
                 </Button>
               </ButtonGroup>
             </GridItem>
