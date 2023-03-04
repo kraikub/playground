@@ -15,6 +15,7 @@ import { OAuth } from "../src/components/OAuth";
 import { GetServerSideProps, NextPage } from "next";
 import axios from "axios";
 import { Footer } from "../src/components/Footer";
+import Head from "next/head";
 
 const signinQueryStringTableContent = [
   {
@@ -88,6 +89,9 @@ export const getServerSideProps: GetServerSideProps<{ data: Data }> = async (
 const Home: NextPage<Data> = (props) => {
   return (
     <>
+      <Head>
+        <meta name="theme-color" content="#001e2b" />
+      </Head>
       <Box
         bg="linear-gradient(169deg, rgba(0,30,43,1) 57%, rgba(0,0,0,1) 100%)"
         minH="100vh"
